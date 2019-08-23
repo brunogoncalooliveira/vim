@@ -1,3 +1,5 @@
+let $HOME="c:/Users/xxx/Desktop/vim"
+
 " still working
 "
 " identar xml
@@ -37,12 +39,83 @@
 "endif
 
 
+
+
+
+"
+"
+" PLUGINS
+"
+"
+
+filetype off
+
+"call plug#begin('c:/Program Files (x86)/Vim/plugged')
+call plug#begin('$HOME/plugged')
+   Plug 'itchyny/lightline.vim'
+   Plug 'ctrlpvim/ctrlp.vim'
+call plug#end()
+"   Plug 'dense-analysis/ale'
+"   Plug 'maximbaz/lightline-ale'
+
+" comandos para ativar plugins
+
+
 filetype plugin indent on
 syntax on
+
+
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+
+
+"
+"
+" CONFIGURAÇÕES PARA PYTHON
+
+"
+"
+
+
+
+"au BufNewFile,BufRead *.py
+"    \ set tabstop=4 |
+"    \ set softtabstop=4 |
+"    \ set shiftwidth=4 |
+"    \ set textwidth=79 |
+"    \ set expandtab |
+"    \ set autoindent |
+"    \ set fileformat=unix |
+"    \ set foldmethod=indent | " Enable folding
+"    \ set foldlevel=4  | " Enable folding
+"    \ set foldlevelstart=4  " Enable folding
+
+\ set foldmethod=indent | " Enable folding
+set foldlevel=4  | " Enable folding
+set foldlevelstart=4  " Enable folding
+
+set encoding=utf-8
+
+set laststatus=2 " para ativar o plugin lightline
+
+autocmd Syntax xml,html,xhtml,json setlocal foldlevel=99
+
+
+"
+"
+" PLUGINS
+"
+"
+
+
+" Enable folding
+"set foldmethod=indent
+"set foldlevel=4
 set encoding=utf-8
 set wrap " Always wrap long lines:
 set hlsearch
-
 " press return to temporarily get out of the highlighted search.
 :nnoremap <CR> :nohlsearch<CR><CR>
 
