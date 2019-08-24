@@ -1,4 +1,33 @@
-let $HOME="c:/Users/xxx/Desktop/vim"
+"
+" Windows
+"
+" no ficheiro c:\Program Files (x86)\Vim\_vimrc acrescentar:
+" 	source C:/Users/USER/Desktop/vim/_vimrc
+" 	let $HOME="c:\Users\USER\Desktop\vim"
+"
+" comentar o vimrc_example.vim
+" source $VIMRUNTIME/vimrc_example.vim
+" 
+
+
+
+if has('win32') || has ('win64')
+    " this is because in my workplace, HOME is defined as H:
+    let $HOME="c:/Users/xxx/Desktop/vim"
+    let $PLUG_FOLDER="$HOME/plugged"
+else
+    if has('macunix')
+        " mapeia o Control-C em Visual Mode para copiar para o clipboard
+        vmap <C-c> "*y<CR>
+        " mapeia o Control-C em Normal Mode para fazer paste a partir do clipboard
+    	  nmap <C-v> "*p<CR>
+    else
+        let $PLUG_FOLDER = $HOME."/.vim/plugged"
+    endif
+endif
+
+
+
 
 " still working
 "
@@ -15,29 +44,10 @@ let $HOME="c:/Users/xxx/Desktop/vim"
 "
 
 
-"
-" Windows
-"
-" no ficheiro c:\Program Files (x86)\Vim\_vimrc acrescentar:
-" 	source C:/Users/USER/Desktop/vim/_vimrc
-" 	let $HOME="c:\Users\USER\Desktop\vim"
-"
-"
-" comentar o vimrc_example.vim
-" source $VIMRUNTIME/vimrc_example.vim
-" 
-
 
 " alguns comandos
 "
 " :set runtimepath? --> permite ver o runtime path
-
-"if has('win32') || has ('win64')
-"	let $VIMHOME = $VIM."/vimfiles"
-"else
-"	let $VIMHOME = $HOME."/.vim"
-"endif
-
 
 
 
@@ -50,8 +60,7 @@ let $HOME="c:/Users/xxx/Desktop/vim"
 
 filetype off
 
-"call plug#begin('c:/Program Files (x86)/Vim/plugged')
-call plug#begin('$HOME/plugged')
+call plug#begin($PLUG_FOLDER)
    Plug 'itchyny/lightline.vim'
    Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
@@ -92,9 +101,10 @@ nnoremap <space> za
 "    \ set foldlevel=4  | " Enable folding
 "    \ set foldlevelstart=4  " Enable folding
 
+" Enable folding --> mas apenas a partir do 4° nível
 set foldmethod=indent " Enable folding
 set foldlevel=4  " Enable folding
-set foldlevelstart=4  " Enable folding
+set foldlevelstart=4  " Enable folding --> #set# global
 
 set encoding=utf-8
 
@@ -110,7 +120,6 @@ autocmd Syntax xml,html,xhtml,json setlocal foldlevel=99
 "
 
 
-" Enable folding
 "set foldmethod=indent
 "set foldlevel=4
 set encoding=utf-8
