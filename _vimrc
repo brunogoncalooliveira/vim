@@ -92,8 +92,8 @@ nnoremap <space> za
 "    \ set foldlevel=4  | " Enable folding
 "    \ set foldlevelstart=4  " Enable folding
 
-\ set foldmethod=indent | " Enable folding
-set foldlevel=4  | " Enable folding
+set foldmethod=indent " Enable folding
+set foldlevel=4  " Enable folding
 set foldlevelstart=4  " Enable folding
 
 set encoding=utf-8
