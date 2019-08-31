@@ -61,6 +61,7 @@ endif
 filetype off
 
 call plug#begin($PLUG_FOLDER)
+   Plug 'posva/vim-vue'
    Plug 'itchyny/lightline.vim'
    Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
